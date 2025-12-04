@@ -1,0 +1,59 @@
+<div class="list-page">
+
+    <div class="filter-controls">
+        <label for="type-select" class="filter-label">Filtrar por Tipo:</label>
+
+        <select id="type-select" (change)="onTypeChange($event)" [value]="pokeService.selectedType()"
+            class="type-select">
+            <option *ngFor="let type of pokeService.types(); trackBy: trackByType" [value]="type.name">
+                {{ type.name | uppercase }}
+            </option>
+        </select>
+    </div>
+
+    <div *ngIf="pokeService.isLoading() && pokeService.allPokemonList().length === 0" class="loading-message">
+        <div class="spinner"></div>
+        Cargando 50 Pokémon iniciales...
+    </div>
+
+    <div *ngIf="
+      pokeService.allPokemonList().length === 0 &&
+      !pokeService.isLoading()
+    " class="error-message">
+        No se pudieron cargar los Pokémon. Por favor, revisa la consola.
+    </div>
+
+    <div *ngIf="
+      pokeService.filteredPokemonList().length === 0 &&
+      !pokeService.isLoading()
+    " class="no-results">
+        No se encontraron Pokémon del tipo seleccionado.
+    </div>
+
+    <div *ngIf="
+      pokeService.filteredPokemonList().length > 0 ||
+      pokeService.isLoading()
+    " class="poke-home">
+        <div class="poke-home__list">
+            <div class="poke-card" *ngFor="let item of pokeService.filteredPokemonList(); trackBy: trackByPoke">
+                <div class="poke-image-wrapper">
+                    <img class="poke-home__img" [src]="item.spriteUrl" [alt]="item.name" loading="lazy">
+                </div>
+
+                <p class="poke-name">{{ item.name | uppercase }}</p>
+
+                <div class="card-types">
+                    <span class="type-pill-sm type-{{ type }}" *ngFor="let type of item.types">
+                        {{ type }}
+                    </span>
+                </div>
+
+                <button class="detail-button" (click)="goToDetails(item.name)">
+                    Detalles
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+</div>

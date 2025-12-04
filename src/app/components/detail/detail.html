@@ -1,0 +1,52 @@
+@if (isLoading()) {
+<div class="detail-loader">Cargando detalles de {{ pokemonName() }}...</div>
+} @else if (pokemonDetails()) {
+<div class="detail-card">
+  <button class="back-button" (click)="goBack()">
+    &larr; Volver al listado
+  </button>
+
+  <h2 class="detail-name">{{ pokemonDetails()!.name | uppercase }}</h2>
+
+  <div class="detail-body">
+    <div class="detail-image-section">
+      <img [src]="pokemonDetails()!.sprites.other['official-artwork'].front_default" [alt]="pokemonDetails()!.name"
+        class="official-image" loading="lazy">
+    </div>
+
+    <div class="detail-info-section">
+      <p class="detail-stats">
+        <strong>ID:</strong> #{{ pokemonDetails()!.id }}
+      </p>
+      <p class="detail-stats">
+        <strong>Altura:</strong> {{ (pokemonDetails()!.height / 10) | number:'1.1-1' }} m
+      </p>
+      <p class="detail-stats">
+        <strong>Peso:</strong> {{ (pokemonDetails()!.weight / 10) | number:'1.1-1' }} kg
+      </p>
+
+      <h3>Tipos</h3>
+      <div class="pill-container">
+        @for (type of pokemonDetails()!.types; track type.slot) {
+        <span class="type-pill type-{{ type.type.name }}">{{ type.type.name | uppercase }}</span>
+        }
+      </div>
+
+      <h3>Habilidades</h3>
+      <div class="pill-container">
+        @for (ability of pokemonDetails()!.abilities; track ability.slot) {
+        <span class="ability-pill">{{ formatAbilityName(ability.ability.name) }}</span>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+} @else if (errorMessage()) {
+<div class="error-message">
+  <h3>Error al cargar</h3>
+  <p>{{ errorMessage() }}</p>
+  <button class="back-button" (click)="goBack()">
+    &larr; Volver al listado
+  </button>
+</div>
+}

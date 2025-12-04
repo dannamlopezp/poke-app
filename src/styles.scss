@@ -1,0 +1,419 @@
+.type-fire {
+    background-color: #ff7878;
+    color: white;
+}
+
+.type-water {
+    background-color: #78aaff;
+    color: white;
+}
+
+.type-grass {
+    background-color: #78cd78;
+    color: white;
+}
+
+.type-electric {
+    background-color: #ffcd78;
+    color: #333;
+}
+
+.type-ice {
+    background-color: #b2e4e4;
+    color: #333;
+}
+
+.type-fighting {
+    background-color: #cd7878;
+    color: white;
+}
+
+.type-poison {
+    background-color: #a078c0;
+    color: white;
+}
+
+.type-ground {
+    background-color: #e4c068;
+    color: #333;
+}
+
+.type-flying {
+    background-color: #a980ff;
+    color: white;
+}
+
+.type-psychic {
+    background-color: #ff98a0;
+    color: #333;
+}
+
+.type-bug {
+    background-color: #c0d868;
+    color: #333;
+}
+
+.type-rock {
+    background-color: #c8b482;
+    color: #333;
+}
+
+.type-ghost {
+    background-color: #8c78b4;
+    color: white;
+}
+
+.type-dragon {
+    background-color: #a8a0e8;
+    color: white;
+}
+
+.type-steel {
+    background-color: #b8b8d0;
+    color: #333;
+}
+
+.type-dark {
+    background-color: #a0a0a0;
+    color: white;
+}
+
+.type-fairy {
+    background-color: #ffb6c1;
+    color: #333;
+}
+
+.type-normal {
+    background-color: #d8d8c8;
+    color: #333;
+}
+
+.type-unknown,
+.type-shadow {
+    background-color: #6a6a6a;
+    color: white;
+}
+
+
+:host {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.app-header {
+    background-color: #cc0000;
+    color: white;
+    padding: 1.5rem 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    border-radius: 0 0 1rem 1rem;
+    text-align: center;
+}
+
+.app-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+.content-wrapper {
+    padding-bottom: 3rem;
+}
+
+.loading-message,
+.error-message,
+.no-results {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: #555;
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin-top: 2rem;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-top: 4px solid #cc0000;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 10px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.filter-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.filter-label {
+    font-weight: 600;
+    color: #555;
+}
+
+.type-select {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #fff;
+    appearance: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.type-select:focus {
+    border-color: #cc0000;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(204, 0, 0, 0.2);
+}
+
+.poke-home__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
+}
+
+.poke-card {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.poke-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.poke-image-wrapper {
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    padding: 0.5rem;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.poke-home__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s;
+}
+
+.poke-name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #333;
+    margin: 0.5rem 0;
+}
+
+.card-types {
+    margin-bottom: 0.75rem;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.type-pill-sm {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.detail-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s, transform 0.1s;
+    margin-top: auto;
+    width: 100%;
+}
+
+.detail-button:hover {
+    background-color: #0056b3;
+}
+
+.detail-button:active {
+    transform: scale(0.98);
+}
+
+.detail-card {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+}
+
+.detail-loader {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    color: #cc0000;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 0;
+    display: block;
+    transition: color 0.2s;
+}
+
+.back-button:hover {
+    color: #990000;
+    text-decoration: underline;
+}
+
+.detail-name {
+    font-size: 2rem;
+    color: #cc0000;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.5rem;
+    margin-top: 0;
+    text-align: center;
+}
+
+.detail-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.detail-image-section {
+    background-color: #f8f8f8;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    max-width: 300px;
+    width: 100%;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.official-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.detail-info-section {
+    width: 100%;
+    max-width: 500px;
+}
+
+.detail-stats {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.detail-info-section h3 {
+    color: #555;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.3rem;
+}
+
+.pill-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.type-pill,
+.ability-pill {
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    /* Píldora */
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.ability-pill {
+    background-color: #e0e7ff;
+    color: #3f51b5;
+}
+
+/* Responsiveness */
+@media (min-width: 768px) {
+    .detail-body {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .detail-image-section {
+        width: 40%;
+    }
+
+    .detail-info-section {
+        width: 60%;
+    }
+}
+
+@media (max-width: 600px) {
+    .app-title {
+        font-size: 1.8rem;
+    }
+
+    .filter-controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .poke-home__list {
+        grid-template-columns: 1fr 1fr;
+        /* Dos columnas en móvil */
+    }
+}
